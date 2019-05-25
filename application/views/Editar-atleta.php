@@ -47,7 +47,7 @@
 					</div>
 					<div class="container-input">
 						<label for="cpf_atleta">CPF:</label>
-						<input type="number" name="cpf_atleta" id="cpf_atleta" value="<?=$atleta[0]->cpf_atleta ?>">
+						<input type="text" maxlength="15" name="cpf_atleta" id="cpf_atleta" value="<?=$atleta[0]->cpf_atleta ?>">
 					</div>
 					<div class="container-input">
 						<label for="sexo_atleta">Sexo:</label>
@@ -84,7 +84,7 @@
 					</div>
 					<div class="container-input">
 						<label for="cpf_responsavel">CPF:</label>
-						<input type="number" name="cpf_responsavel" id="cpf_responsavel" value="<?=$atleta[0]->cpf_responsavel ?>">
+						<input type="text" name="cpf_responsavel" maxlength="15" id="cpf_responsavel" value="<?=$atleta[0]->cpf_responsavel ?>" >
 					</div>
 					<div class="container-input">
 						<label for="email_responsavel">Email:</label>
@@ -96,7 +96,15 @@
 					</div>
 				</div>
 				<div class="container-divisão-form">
-					<p>Autorizo a sua participação nas aulas de Ginástica Artística do Projeto Ginaslouquinhos nos dias <input type="text" name="dias_participacao" value="<?=$atleta[0]->dias_participacao ?>">Horário<input type="time" name="horario_participacao" value="<?=$atleta[0]->horario_participacao ?>"></p>
+					<p>Autorizo a sua participação nas aulas de Ginástica Artística do Projeto Ginaslouquinhos nos:</p>
+					<div class="container-input">
+						<label>Dias</label>
+						 <input type="text" name="dias_participacao" value="<?=$atleta[0]->dias_participacao ?>">
+					</div>
+					<div class="container-input">
+						<label>Horário</label>
+						<input type="time" name="horario_participacao" value="<?=$atleta[0]->horario_participacao ?>">
+					</div>
 				</div>
 				<div class="container-input">
 					<input type="submit" value="Editar atleta">

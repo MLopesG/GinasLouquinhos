@@ -31,3 +31,12 @@ var excluir = (link)=>{
 $('#abrir').click(()=>{
 	$('#nav').toggle("fadding");
 });
+
+
+// Mascaras
+
+ $('#cel_responsavel').mask('(99) 99999-9999');
+ $('#cpf_responsavel').mask('000.000.000-00', {reverse: true});
+ $('#cpf_atleta').mask('000.000.000-00', {reverse: true});
+ $('#rg_atleta').mask('0.000.000', {reverse: true});
+ $('#rg_responsavel').mask('0.000.000', {reverse: true});

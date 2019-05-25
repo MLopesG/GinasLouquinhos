@@ -11,9 +11,18 @@
 			
 			<nav id="nav">
 				<ul>
-					<li><a href="<?=base_url('usuarios') ?>">Usuários</a></li>
-					<li><a href="<?=base_url('instituicoes') ?>">Instituições</a></li>
-					<li><a href="<?=base_url('atleta/cadastro') ?>">Cadastrar atleta</a></li>
+					<?php if($_SERVER['PATH_INFO'] != '/painel'): ?>
+						<li><a href="<?=base_url('painel') ?>">Atletas</a></li>
+					<?php endif; ?>
+					<?php if($_SERVER['PATH_INFO'] != '/usuarios'): ?>
+						<li><a href="<?=base_url('usuarios') ?>">Usuários</a></li>
+					<?php endif; ?>
+					<?php if($_SERVER['PATH_INFO'] != '/instituicoes'): ?>
+						<li><a href="<?=base_url('instituicoes') ?>">Instituições</a></li>
+					<?php endif; ?>
+					<?php if($_SERVER['PATH_INFO'] != '/atleta/cadastro'): ?>
+						<li><a href="<?=base_url('atleta/cadastro') ?>">Cadastrar atleta</a></li>
+					<?php endif; ?>
 					<li><a href="<?=base_url('sair') ?>">Sair</a></li>
 				</ul>
 			</nav>

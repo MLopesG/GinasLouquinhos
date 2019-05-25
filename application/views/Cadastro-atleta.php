@@ -57,7 +57,7 @@
 					</div>
 					<div class="container-input">
 						<label for="cpf_atleta">CPF:</label>
-						<input type="number" name="cpf_atleta" id="cpf_atleta">
+						<input type="cpf" name="cpf_atleta" id="cpf_atleta" maxlength="11">
 					</div>
 					<div class="container-input">
 						<label for="data_nascimento_atleta">Data nascimento:</label>
@@ -98,7 +98,7 @@
 					</div>
 					<div class="container-input">
 						<label for="cpf_responsavel">CPF:</label>
-						<input type="number" name="cpf_responsavel" id="cpf_responsavel">
+						<input type="text" name="cpf_responsavel" id="cpf_responsavel"  maxlength="11">
 					</div>
 					<div class="container-input">
 						<label for="email_responsavel">Email:</label>
@@ -110,7 +110,15 @@
 					</div>
 				</div>
 				<div class="container-divisão-form">
-					<p>Autorizo a sua participação nas aulas de Ginástica Artística do Projeto Ginaslouquinhos nos dias <input type="text" name="dias_participacao">Horário<input type="time" name="horario_participacao"></p>
+					<p>Autorizo a sua participação nas aulas de Ginástica Artística do Projeto Ginaslouquinhos nos:</p>
+					<div class="container-input">
+						<label>Dias</label>
+						<input type="text" name="dias_participacao">
+					</div>
+					<div class="container-input">
+						<label>Horário</label>
+						<input type="time" name="horario_participacao">
+					</div>
 				</div>
 				<div class="container-input">
 						<label for="data_cadastro">Data cadastro:</label>
@@ -123,6 +131,5 @@
 		</div>
 	</main>
 	<script type="text/javascript" src="<?=base_url('public/js/card.js')?>"></script>
-
 </body>
 </html>
