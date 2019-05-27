@@ -30,6 +30,7 @@ CREATE TABLE usuarios(
 	id_usuario integer PRIMARY KEY auto_increment,
 	nome_usuario VARCHAR(100),
 	email_usuario VARCHAR(100),
-	senha_usuario VARCHAR(100)
+	senha_usuario VARCHAR(100),
+	nivel_acesso text,
 );
 

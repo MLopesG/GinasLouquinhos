@@ -40,3 +40,11 @@ $('#abrir').click(()=>{
  $('#cpf_atleta').mask('000.000.000-00', {reverse: true});
  $('#rg_atleta').mask('0.000.000', {reverse: true});
  $('#rg_responsavel').mask('0.000.000', {reverse: true});
+
+
+var form_idade = (option)=>{
+	if(option == 'faixaetária de idade'){
+		document.querySelector('#form_filter').style.display = 'none';
+		document.querySelector('#form_filter_idade').style.display = 'block';
+	}
+}

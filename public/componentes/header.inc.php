@@ -11,7 +11,7 @@
 			
 			<nav id="nav">
 				<ul>
-					<?php if($_SERVER['PATH_INFO'] != '/painel'): ?>
+					<?php if($_SERVER['PATH_INFO'] != '/painel' and  $_SERVER['PATH_INFO'] != '/painel/relatorios' and $_SERVER['PATH_INFO'] != '/filtro/pesquisa/relatorio'): ?>
 						<li><a href="<?=base_url('painel') ?>">Atletas</a></li>
 					<?php endif; ?>
 					<?php if($_SERVER['PATH_INFO'] != '/usuarios'): ?>

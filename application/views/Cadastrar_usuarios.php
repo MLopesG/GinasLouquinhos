@@ -44,6 +44,13 @@
 					<input type="senha" name="senha_usuario" id="senha_usuario" >
 				</div>
 				<div class="container-input">
+					<label for="nivel_acesso">Nivel de acesso:</label>
+					<select name="nivel_acesso" id="nivel_acesso">
+						<option value="Visitante">Visitante</option>
+						<option value="Admin">Admin</option>
+					</select>
+				</div>
+				<div class="container-input">
 					<input type="submit" value="Cadastrar" >
 				</div>
 			</form>

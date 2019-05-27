@@ -30,7 +30,7 @@
 			<?php  foreach ($usuarios as $usuario):?>
 				<div>
 					<div class="users">
-						<p><?=$usuario->nome_usuario?></p>
+						<p><?=$usuario->nome_usuario?> <b>(<?=$usuario->nivel_acesso?>)</b></p>
 						<p><a onclick="excluir('<?=base_url("usuarios/deletar/$usuario->id_usuario")?>')"><i id="abrir" class="material-icons">delete</i></a></p>
 						
 					</div>

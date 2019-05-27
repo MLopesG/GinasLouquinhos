@@ -6,7 +6,7 @@ class Instituicao extends CI_Controller {
 	{
 		$consulta = $this->Dao_instituicao->instituicoes();
 		$data = array('instituicoes' => $consulta);
-		$this->load->view('Instituições',$data);
+		$this->load->view('instituicoes',$data);
 	}
 	public function Cadastro_instituicao()
 	{
@@ -16,7 +16,7 @@ class Instituicao extends CI_Controller {
 	{
 		$consulta = $this->Dao_instituicao->editar_instituicao($id);
 		$data = array('instituicao' => $consulta);
-		$this->load->view('Editar_Instituição',$data);
+		$this->load->view('Editar_Instituicao',$data);
 	}
 	public function editar_salvar_instituicao($id)
 	{
@@ -30,7 +30,7 @@ class Instituicao extends CI_Controller {
 			$this->form_validation->set_rules('nome_instituicao_ensino','Nome instituição de ensino','required');
 
 			if($this->form_validation->run() == FALSE){
-				$this->load->view('Cadastro_Instituição');
+				$this->load->view('Cadastro_Instituicao');
 			}else{
 				$this->Dao_instituicao->salvar_instituicao($this->input->post());
 				$this->session->set_flashdata('messagem', ' instituição de ensino cadastrada com sucesso.');

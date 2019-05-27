@@ -32,16 +32,17 @@
 				<form  action="<?=base_url('filtro/pesquisa');?>" method="post">
 					<div class="container-input">
 						<div>
-							<input type="text" name="pesquisa" placeholder="Exemplo de pesquisa: Data de nascimento 1999-02-12, Sexo: Masculino ou Feminino e Unidade DOURADÃO,UNIGRAN  e Retirou Camiseta ">
-						</div>
-						<div>
 							<select name="tipo_pesquisa">
 								<option>Selecionar pesquisa</option>
-								<option>Data Nascimento</option>
+								<option>Data nascimento</option>
 								<option>Sexo</option>
 								<option>Unidade</option>
 								<option>Atleta</option>
+								<option>Instituição de ensino</option>
 							</select>
+						</div>
+						<div>
+							<input type="text" name="pesquisa" placeholder="Exemplo de pesquisa: Data de nascimento 1999-02-12, Sexo: Masculino ou Feminino e Unidade DOURADÃO,UNIGRAN  e Retirou Camiseta ">
 						</div>
 						<input type="submit" value="Filtrar" >
 					</div>
@@ -81,6 +82,10 @@
 				<?php if(!empty($links)): ?>
 				<p><?=$links; ?></p>
 				<?php endif; ?>
+			</div>
+
+			<div class="btn-container">
+				<a href="<?=base_url('painel/relatorios') ?>">Relatórios - registros</a>
 			</div>
 		</div>
 	</main>

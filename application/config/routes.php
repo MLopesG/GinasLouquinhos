@@ -15,10 +15,13 @@
 	$route['painel'] = 'painel';
 	$route['painel/(:num)'] = 'painel';
 	$route['filtro/pesquisa'] = 'painel/filtro';
+	$route['filtro/pesquisa/relatorio'] = 'painel/filtro_relatorios';
+	$route['filtro/pesquisa/relatorio/idade'] = 'painel/filtro_relatorio_idade';
 	$route['atleta/cadastro'] = 'cadastro';
 	$route['atleta/cadastro/salvar'] = 'cadastro/salvar_atleta';
 	$route['atleta/deletar/(:any)'] ='cadastro/deletar_atleta/$1';
 	$route['atleta/editar/(:any)'] ='cadastro/editar_atleta/$1';
 	$route['atleta/editar/salvar/(:any)'] ='cadastro/editar_salvar_atleta/$1';
+	$route['painel/relatorios'] = 'painel/Relatorios';
 	$route['404_override'] = '';
 	$route['translate_uri_dashes'] = FALSE;

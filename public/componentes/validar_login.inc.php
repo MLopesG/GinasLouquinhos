@@ -12,4 +12,6 @@
 		$this->session->set_flashdata('messagem','Sessão finalizada.');
 		redirect('/');
 	endif;
+
+	
 ?>
