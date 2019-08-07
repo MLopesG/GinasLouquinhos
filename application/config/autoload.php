@@ -18,4 +18,4 @@ $autoload['config'] = array();
 
 $autoload['language'] = array();
 
-$autoload['model'] = array('Dao_painel','Dao_atleta','Dao_login','Dao_usuario','Dao_instituicao');
+$autoload['model'] = array('Dao_painel','Dao_atleta','Dao_login','Dao_usuario','Dao_instituicao','Dao_polos');

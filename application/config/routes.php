@@ -2,6 +2,7 @@
 	defined('BASEPATH') OR exit('No direct script access allowed');
 	$route['default_controller'] = 'login';
 	$route['entrar'] = 'login/entrar';
+	$route['suporte'] = 'suporte';
 	$route['sair'] = 'login/sair';
 	$route['instituicoes'] = 'instituicao';
 	$route['instituicao/cadastrar'] = 'instituicao/Cadastro_instituicao';
@@ -14,6 +15,12 @@
 	$route['usuarios/cadastrar/salvar'] = 'usuarios/salvar_usuario';
 	$route['painel'] = 'painel';
 	$route['painel/(:num)'] = 'painel';
+	$route['unidades'] = 'polos';
+	$route['unidades/cadastrar'] = 'polos/Cadastro_polo_unidade';
+	$route['unidades/cadastrar/salvar'] = 'polos/salvar_polo_unidade';
+	$route['unidades/deletar/(:any)'] = 'polos/deletar_polo_unidade/$1';
+	$route['unidades/editar/(:any)'] ='polos/editar_polo_unidade/$1';
+	$route['unidades/editar/salvar/(:any)'] ='polos/editar_polo_unidade_salvar/$1';
 	$route['filtro/pesquisa'] = 'painel/filtro';
 	$route['filtro/pesquisa/relatorio'] = 'painel/filtro_relatorios';
 	$route['filtro/pesquisa/relatorio/idade'] = 'painel/filtro_relatorio_idade';
@@ -23,5 +30,6 @@
 	$route['atleta/editar/(:any)'] ='cadastro/editar_atleta/$1';
 	$route['atleta/editar/salvar/(:any)'] ='cadastro/editar_salvar_atleta/$1';
 	$route['painel/relatorios'] = 'painel/Relatorios';
+	$route['painel/relatorio-geral'] = 'painel/relatorio_geral';
 	$route['404_override'] = '';
 	$route['translate_uri_dashes'] = FALSE;

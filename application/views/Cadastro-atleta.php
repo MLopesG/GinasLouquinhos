@@ -32,17 +32,14 @@
 			</div>
 			<form method="post" action="<?=base_url('atleta/cadastro/salvar')?>">
 				<div class="container-divisão-form">
-					<div class="container-checkbox">
-						<label for="Unidade">Unidade:</label>
-						<div>
-							<input type="checkbox" name="unidade" value="DOURADÃO">DOURADÃO
-						</div>
-						<div>
-							<input type="checkbox" name="unidade" value="UNIGRAN">UNIGRAN
-						</div>
-						<div>
-							<input type="checkbox" name="unidade" value="RETIROU A CAMISETA">Retirou Camiseta
-						</div>
+					<label>Unidade <b>(Selecione unidade):</b></label>
+					<div class="container-input">
+						<select name="unidade">
+							<option value="">Selecione unidade</option>
+							<?php foreach ($polos_unidades as $unidade):?>
+								<option value="<?=$unidade->polo_unidade ?>"><?=$unidade->polo_unidade ?></option>
+						    <?php endforeach ?>
+						</select>
 					</div>
 				</div>
 				<div class="container-divisão-form">
@@ -72,9 +69,9 @@
 						</select>
 					</div>
 					<div class="container-input">
-						<label for="id_instituicao_ensino">Instituição de ensino:</label>
+						<label for="id_instituicao_ensino">Escola(instituição):</label>
 						<select name="id_instituicao_ensino" id="id_instituicao_ensino">
-							<option value="">Instituição de ensino</option>
+							<option value="">Escola(instituição)</option>
 							nome_instituicao_ensino ?></option>
 							<?php foreach ($instituicao_ensino as $ensino):?>
 								<option value="<?=$ensino->id_instituicao_ensino?>"><?=$ensino->nome_instituicao_ensino?></option>

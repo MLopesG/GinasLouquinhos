@@ -10,7 +10,7 @@ class Instituicao extends CI_Controller {
 	}
 	public function Cadastro_instituicao()
 	{
-		$this->load->view('Cadastro_Instituição');
+		$this->load->view('Cadastro_Instituicao');
 	}
 	public function editar_instituicao($id)
 	{

@@ -11,7 +11,7 @@ class Painel extends CI_Controller {
 		$config = array();
         $config["base_url"] = base_url() . "painel";
         $config["total_rows"] = $this->Dao_painel->registros_atletas();
-        $config["per_page"] = 10;
+        $config["per_page"] = 20;
         $config["uri_segment"] = 2;
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
@@ -19,6 +19,10 @@ class Painel extends CI_Controller {
         $data['total'] = $this->Dao_painel->registros_atletas();
         $data['atletas'] = $this->Dao_painel->todos_atletas($config["per_page"], $page);
 		$this->load->view('Painel',$data);
+	}
+	public function  relatorio_geral(){
+		$data['atletas'] = $this->Dao_painel->todos_atletas_relatorios();
+		$this->load->view('Relatorios-geral',$data);
 	}
 	public function filtro()
 	{
@@ -40,7 +44,7 @@ class Painel extends CI_Controller {
 		}else if($tipo_pesquisa == 'Atleta'){
 			$tipo_filtro = 'nome_atleta';
 			$pesquisa = $pesquisa_input;
-		}else if($tipo_pesquisa == 'Instituição de ensino'){
+		}else if($tipo_pesquisa == 'escola'){
 			$tipo_filtro = 'instituicao_ensino.nome_instituicao_ensino';
 			$pesquisa = $pesquisa_input;
 		}else{

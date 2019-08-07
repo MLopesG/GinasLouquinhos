@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-$config['base_url'] = 'http://localhost/GINASLOUQUINHOS/';
+$config['base_url'] = 'http://localhost/ginas/';
 
 
 $config['index_page'] = 'index.php';

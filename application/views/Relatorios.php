@@ -16,7 +16,7 @@
 	<main>
 		<div class="container">
 			<div class="container-titulo">
-				<h1>Relatório - Encontrados: <b><?=$total ?></b></h1>
+				<h1>Relatório - registros encontrados: <b><?=$total ?></b></h1>
 			</div>
 			<?php if($this->session->flashdata('messagem')): ?>
 				<div class="erros">
@@ -33,11 +33,11 @@
 								<option>data nascimento</option>
 								<option>sexo</option>
 								<option>unidade</option>
-								<option>instituição de ensino</option>
+								<option value="instituição de ensino">escola</option>
 							</select>
 						</div>
 						<div>
-							<input type="text" name="pesquisa" placeholder="Exemplo de pesquisa: Data de nascimento 1999-02-12, Sexo: Masculino ou Feminino e Unidade DOURADÃO,UNIGRAN  e Retirou Camiseta ">
+							<input type="text" name="pesquisa" placeholder="Exemplo de pesquisa: Data de nascimento 1999-02-12, Sexo: Masculino ou Feminino e Unidade " id="input_consulta">
 						</div>
 						<input type="submit" value="Filtrar" >
 					</div>
@@ -81,7 +81,7 @@
 				</tfoot>
 			</table>
 			<div class="btn-container">
-				<a onclick="Gerar_pdf()">Gerar - PDF</a>
+				<a onclick="Gerar_pdf()">Gerar documento - PDF</a>
 			</div>
 			<?php endif; ?>
 		</div>

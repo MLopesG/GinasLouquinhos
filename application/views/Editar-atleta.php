@@ -21,20 +21,16 @@
 			</div>
 			<form method="post" action="<?=base_url('atleta/editar/salvar/'.$atleta[0]->id_aluno_atleta.'');?>">
 				<div class="container-divisão-form">
-					<div class="container-checkbox">
-						<label for="Unidade">Unidade:</label>
-						<div>
-							<input type="checkbox" name="unidade" value="DOURADÃO">DOURADÃO
-						</div>
-						<div>
-							<input type="checkbox" name="unidade" value="UNIGRAN">UNIGRAN
-						</div>
-						<div>
-							<input type="checkbox" name="unidade" value="Retirou a Camiseta">Retirou a Camiseta
-						</div>
+					<label>Unidade <b>(Selecione unidade):</b></label>
+					<div class="container-input">
+						<select multiple name="unidade">
+							<?php foreach ($polos_unidades as $unidade):?>
+								<option selected> <?=$atleta[0]->unidade ?></option>
+								<option value="<?=$unidade->polo_unidade ?>"><?=$unidade->polo_unidade ?></option>
+						    <?php endforeach ?>
+						</select>
 					</div>
 				</div>
-				
 				<div class="container-divisão-form">
 					<legend>Dados Cadastrais do Aluno-atleta</legend>
 					<div class="container-input">

@@ -10,6 +10,7 @@ class Dao_painel extends CI_Model {
 		$this->db->select('*');
 		$this->db->from('aluno_atleta');
 		$this->db->join('instituicao_ensino', 'aluno_atleta.id_instituicao_ensino = instituicao_ensino.id_instituicao_ensino');
+		$this->db->order_by('aluno_atleta.nome_atleta','asc');
 		$this->db->limit($inicio,$maximo); 
 		return $this->db->get()->result();
 	}
@@ -18,6 +19,7 @@ class Dao_painel extends CI_Model {
 		$this->db->select('*');
 		$this->db->from('aluno_atleta');
 		$this->db->join('instituicao_ensino', 'aluno_atleta.id_instituicao_ensino = instituicao_ensino.id_instituicao_ensino');
+		$this->db->order_by('aluno_atleta.nome_atleta','asc');
 		return $this->db->get()->result();
 	}
 	public function registros_atletas()
@@ -29,6 +31,7 @@ class Dao_painel extends CI_Model {
 		$this->db->like($tipo_filtro,$pesquisa);
 		$this->db->from('aluno_atleta');
 		$this->db->join('instituicao_ensino', 'aluno_atleta.id_instituicao_ensino = instituicao_ensino.id_instituicao_ensino');
+		$this->db->order_by('aluno_atleta.nome_atleta','asc');
 		return $this->db->get()->result();
 	}
 	public function filtro_pesquisa_idade($idade1,$idade2)

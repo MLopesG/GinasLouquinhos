@@ -5,7 +5,8 @@ class Cadastro extends CI_Controller {
 	public function index()
 	{
 		$instituicao_ensino = $this->Dao_atleta->Todos_instituicao_ensino(); 
-		$data = array('instituicao_ensino'=>$instituicao_ensino);
+		$polos_unidades = $this->Dao_polos->polos_unidades();
+		$data = array('instituicao_ensino'=>$instituicao_ensino,'polos_unidades'=>$polos_unidades);
 		$this->load->view('Cadastro-atleta',$data);
 	}
 	public function deletar_atleta($id)
@@ -18,7 +19,8 @@ class Cadastro extends CI_Controller {
 	{
 		$instituicao_ensino = $this->Dao_atleta->Todos_instituicao_ensino(); 
 		$consulta = $this->Dao_atleta->editar_atleta($id);
-		$data = array('atleta' => $consulta,'instituicao_ensino'=>$instituicao_ensino);
+		$polos_unidades = $this->Dao_polos->polos_unidades();
+		$data = array('atleta' => $consulta,'instituicao_ensino'=>$instituicao_ensino,'polos_unidades'=>$polos_unidades);
 		$this->load->view('Editar-atleta',$data);
 	}
 	public function editar_salvar_atleta($id)
@@ -49,11 +51,10 @@ class Cadastro extends CI_Controller {
 			$this->form_validation->set_rules('horario_participacao','Horário','required');
 			
 
-
-
 			if($this->form_validation->run() == FALSE){
 				$instituicao_ensino = $this->Dao_atleta->Todos_instituicao_ensino(); 
-				$data = array('instituicao_ensino'=>$instituicao_ensino);
+				$polos_unidades = $this->Dao_polos->polos_unidades();
+				$data = array('instituicao_ensino'=>$instituicao_ensino,'polos_unidades'=>$polos_unidades);
 				$this->load->view('Cadastro-atleta',$data);
 			}else{
 				$this->Dao_atleta->salvar_atleta($this->input->post());

@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Cadastrar Escola - Ginas Louquinhos</title>
+	<title>Escolas - Ginas Louquinhos</title>
 	<meta charset="utf-8">
 	<link rel="shortcut icon" href="<?=base_url('public/img/índice.png');?>" type="image/png"/>
 	<link rel="stylesheet" type="text/css" href='<?=base_url('public/css/style.css');?>'>
@@ -15,30 +15,29 @@
 <body>
 	<?php include('public/componentes/header.inc.php');?>
 	<main>
+		<div id="messagem" title="Deseja excluir instituição de ensino?">
+			<p>Unidade será excluido do banco de dados.</p>
+		</div>
 		<div class="container">
-			<?php if(validation_errors() == true): ?>
-				<div class="erros">
-					<h1>Preencha todos os campos.</h1>
-					<?php echo validation_errors(); ?>
-				</div>
-			<?php endif; ?>
+			<div class="container-titulo">
+				<h1>Unidades - cadastradas</h1>
+			</div>
 			<?php if($this->session->flashdata('messagem')): ?>
 				<div class="erros">
 					<p><?=$this->session->flashdata('messagem') ?></p>
 				</div>
 			<?php endif;  ?>
-			<div class="container-titulo">
-				<h1>Cadastrar escola</h1>
+			<?php  foreach ($polos_unidades as $unidade):?>
+				<div>
+					<div class="users">
+						<p><?=$unidade->polo_unidade?></p>
+						<p><a onclick="excluir('<?=base_url("unidades/deletar/$unidade->id_polo_unidade")?>')"><i  class="material-icons">delete</i></a> <a href="<?=base_url("unidades/editar/$unidade->id_polo_unidade")?>"><i  class="material-icons">edit</i></a></p>
+					</div>
+				</div>
+			<?php endforeach ?>
+			<div class="btn-container">
+				<a href="<?=base_url('unidades/cadastrar') ?>">Cadastrar unidade - polo</a>
 			</div>
-			<form action="<?=base_url('instituicao/cadastrar/salvar') ?>" method='post'>
-				<div class="container-input">
-					<label for="nome_instituicao_ensino">Nome escola:</label>
-					<input type="text" name="nome_instituicao_ensino" id="nome_instituicao_ensino">
-				</div>
-				<div class="container-input">
-					<input type="submit" value="Cadastrar instituição" >
-				</div>
-			</form>
 		</div>
 	</main>
 	<script type="text/javascript" src="<?=base_url('public/js/card.js')?>"></script>

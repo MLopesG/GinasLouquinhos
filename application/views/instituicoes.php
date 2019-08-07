@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Instituições - Ginas Louquinhos</title>
+	<title>Escolas - Ginas Louquinhos</title>
 	<meta charset="utf-8">
 	<link rel="shortcut icon" href="<?=base_url('public/img/índice.png');?>" type="image/png"/>
 	<link rel="stylesheet" type="text/css" href='<?=base_url('public/css/style.css');?>'>
@@ -16,11 +16,11 @@
 	<?php include('public/componentes/header.inc.php');?>
 	<main>
 		<div id="messagem" title="Deseja excluir instituição de ensino?">
-			<p>Instituição de ensino será excluido do banco de dados.</p>
+			<p>Escola será excluido do banco de dados.</p>
 		</div>
 		<div class="container">
 			<div class="container-titulo">
-				<h1>Instituições de ensino - cadastradas</h1>
+				<h1>Escolas - cadastradas</h1>
 			</div>
 			<?php if($this->session->flashdata('messagem')): ?>
 				<div class="erros">
@@ -30,14 +30,14 @@
 			<?php  foreach ($instituicoes as $instituicao):?>
 				<div>
 					<div class="users">
-						<p><?=$instituicao->nome_instituicao_ensino?></p>
+						<p><?=$instituicao->nome_instituicao_ensino?> <b>(<?=$instituicao->quantidade_por_escola ?>) - alunos</b></p>
 						<p><a onclick="excluir('<?=base_url("instituicao/deletar/$instituicao->id_instituicao_ensino")?>')"><i  class="material-icons">delete</i></a> <a href="<?=base_url("instituicao/editar/$instituicao->id_instituicao_ensino")?>"><i  class="material-icons">edit</i></a></p>
 						
 					</div>
 				</div>
 			<?php endforeach ?>
 			<div class="btn-container">
-				<a href="<?=base_url('instituicao/cadastrar') ?>">Cadastrar instituição de ensino</a>
+				<a href="<?=base_url('instituicao/cadastrar') ?>">Cadastrar escola</a>
 			</div>
 		</div>
 	</main>

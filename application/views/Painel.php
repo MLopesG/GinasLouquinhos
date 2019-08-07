@@ -19,7 +19,7 @@
 		</div>
 		<div class="container">
 			<div class="container-titulo">
-				<h1>Alunos( <b><?=$total ?></b> - atletas) </h1>
+				<h1>Atletas (<b><?=$total ?></b> - atletas)</h1>
 			</div>
 			<?php if($this->session->flashdata('messagem')): ?>
 				<div class="erros">
@@ -29,26 +29,25 @@
 			<details>
 				<summary>Filtrar atletas</summary>
 				<div class="container-filter">
-				<form  action="<?=base_url('filtro/pesquisa');?>" method="post">
-					<div class="container-input">
-						<div>
-							<select name="tipo_pesquisa">
-								<option>Selecionar pesquisa</option>
-								<option>Data nascimento</option>
-								<option>Sexo</option>
-								<option>Unidade</option>
-								<option>Atleta</option>
-								<option>Instituição de ensino</option>
-							</select>
+					<form  action="<?=base_url('filtro/pesquisa');?>" method="post">
+						<div class="container-input">
+							<div>
+								<select name="tipo_pesquisa">
+									<option>Selecionar pesquisa</option>
+									<option>Data nascimento</option>
+									<option>Sexo</option>
+									<option>Unidade</option>
+									<option>Atleta</option>
+									<option value="escola">Instituição de ensino</option>
+								</select>
+							</div>
+							<div>
+								<input type="text" name="pesquisa" placeholder="Exemplo de pesquisa: Data de nascimento 1999-02-12, Sexo: Masculino ou Feminino e Unidade">
+							</div>
+							<input type="submit" value="Filtrar" >
 						</div>
-						<div>
-							<input type="text" name="pesquisa" placeholder="Exemplo de pesquisa: Data de nascimento 1999-02-12, Sexo: Masculino ou Feminino e Unidade DOURADÃO,UNIGRAN  e Retirou Camiseta ">
-						</div>
-						<input type="submit" value="Filtrar" >
-					</div>
-				</form>
-				
-			</div>
+					</form>
+				</div>
 			</details>
 			<?php  foreach ($atletas as $atleta):?>
 				<div>
@@ -56,8 +55,8 @@
 					<div class="panel">
 					  <ul>
 					  	<li>
-							<a onclick="excluir('<?=base_url("atleta/deletar/$atleta->id_aluno_atleta")?>')">Deletar</a>
-							<a href="<?=base_url("atleta/editar/$atleta->id_aluno_atleta");?>">Editar</a>
+							<a onclick="excluir('<?=base_url("atleta/deletar/$atleta->id_aluno_atleta")?>')">Excluir Atleta</a>
+							<a href="<?=base_url("atleta/editar/$atleta->id_aluno_atleta");?>">Alterar dados</a>
 						</li>
 					  	<li>Unidade: <?=$atleta->unidade?></li>
 					  	<li>Nome completo: <?=$atleta->nome_atleta?></li>
@@ -78,14 +77,16 @@
 					</div>
 				</div>
 			<?php endforeach ?>
-			<div class="pagination">
-				<?php if(!empty($links)): ?>
-				<p><?=$links; ?></p>
-				<?php endif; ?>
-			</div>
-
-			<div class="btn-container">
-				<a href="<?=base_url('painel/relatorios') ?>">Relatórios - registros</a>
+			<div class="container-btns">
+				<div class="pagination">
+					<?php if(!empty($links)): ?>
+					<p><?=$links; ?></p>
+					<?php endif; ?>	
+				</div>
+				<div class="btn-container">
+					<a href="<?=base_url('painel/relatorio-geral') ?>"> Relatório geral</a>
+						<a href="<?=base_url('painel/relatorios') ?>">Relatórios - registros</a>
+				</div>
 			</div>
 		</div>
 	</main>

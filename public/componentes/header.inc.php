@@ -23,8 +23,11 @@
 					<?php if($_SERVER['PATH_INFO'] != '/instituicoes'): ?>
 						<li><a href="<?=base_url('instituicoes') ?>">Escolas</a></li>
 					<?php endif; ?>
+					<?php if($_SERVER['PATH_INFO'] != '/suporte'): ?>
+						<li><a href="<?=base_url('suporte') ?>">Suporte</a></li>
+					<?php endif; ?>
 					<?php if($_SERVER['PATH_INFO'] != '/atleta/cadastro'): ?>
-						<li><a href="<?=base_url('atleta/cadastro') ?>">Cadastrar atleta</a></li>
+						<li><a href="<?=base_url('atleta/cadastro') ?>">Cadastro atleta</a></li>
 					<?php endif; ?>
 					
 					<li><a href="<?=base_url('sair') ?>">Sair</a></li>
