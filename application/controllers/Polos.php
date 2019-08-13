@@ -27,6 +27,7 @@ class Polos extends CI_Controller {
 	public function salvar_polo_unidade()
 	{
 		$this->form_validation->set_rules('polo_unidade','Nome unidade ','required');
+		$this->form_validation->set_rules('endereco','Endereço unidade ','required');
 
 		if($this->form_validation->run() == FALSE){
 			$this->load->view('Cadastro_polos_unidades');
@@ -39,7 +40,7 @@ class Polos extends CI_Controller {
 	public function deletar_polo_unidade($id)
 	{
 		$consulta = $this->Dao_polos->deletar_polo_unidade($id);
-		$this->session->set_flashdata('messagem', 'unidade deletada com sucesso.');
+		$this->session->set_flashdata('messagem', 'Unidade deletada com sucesso.');
 		redirect('/unidades');
 	}
 }

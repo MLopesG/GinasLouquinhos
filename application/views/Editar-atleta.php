@@ -21,17 +21,6 @@
 			</div>
 			<form method="post" action="<?=base_url('atleta/editar/salvar/'.$atleta[0]->id_aluno_atleta.'');?>">
 				<div class="container-divisão-form">
-					<label>Unidade <b>(Selecione unidade):</b></label>
-					<div class="container-input">
-						<select multiple name="unidade">
-							<?php foreach ($polos_unidades as $unidade):?>
-								<option selected> <?=$atleta[0]->unidade ?></option>
-								<option value="<?=$unidade->polo_unidade ?>"><?=$unidade->polo_unidade ?></option>
-						    <?php endforeach ?>
-						</select>
-					</div>
-				</div>
-				<div class="container-divisão-form">
 					<legend>Dados Cadastrais do Aluno-atleta</legend>
 					<div class="container-input">
 						<label for="nome_atleta">Nome:</label>
@@ -44,6 +33,10 @@
 					<div class="container-input">
 						<label for="cpf_atleta">CPF:</label>
 						<input type="text" maxlength="15" name="cpf_atleta" id="cpf_atleta" value="<?=$atleta[0]->cpf_atleta ?>">
+					</div>
+					<div class="container-input">
+						<label for="data_nascimento_atleta">Data nascimento:</label>
+						<input type="date" name="data_nascimento_atleta" id="data_nascimento_atleta" value="<?=$atleta[0]->data_nascimento_atleta ?>">
 					</div>
 					<div class="container-input">
 						<label for="sexo_atleta">Sexo:</label>
@@ -93,13 +86,18 @@
 				</div>
 				<div class="container-divisão-form">
 					<p>Autorizo a sua participação nas aulas de Ginástica Artística do Projeto Ginaslouquinhos nos:</p>
-					<div class="container-input">
-						<label>Dias</label>
-						 <input type="text" name="dias_participacao" value="<?=$atleta[0]->dias_participacao ?>">
-					</div>
-					<div class="container-input">
-						<label>Horário</label>
-						<input type="time" name="horario_participacao" value="<?=$atleta[0]->horario_participacao ?>">
+					<div class="container-divisão-form">
+						<label>Dias/Horário:</label>
+						<div class="container-input">
+							<select name="id_turma">
+								<option value="<?=$atleta[0]->id_turma ?>">Turma atual: (Professor:(<?=$atleta[0]->nome_professor?>) - Dias: (<?=$atleta[0]->dias_semanais?>)  Unidade:(<?=$atleta[0]->polo_unidade?>)
+										Horário: (<?=$atleta[0]->horario_inicio?> às <?=$atleta[0]->horario_final?>) - Periodo: (<?=$atleta[0]->turno?>))</option>
+								<?php foreach ($turmas as $turma):?>
+									<option value="<?=$turma->id_turma ?>">Professor:(<?=$turma->nome_professor?>) -  Dias:(<?=$turma->dias_semanais?>) - Unidade:(<?=$turma->polo_unidade?>)
+										Horário: (<?=$turma->horario_inicio?> às <?=$turma->horario_final?>) - Periodo: (<?=$turma->turno?>)</option>
+							    <?php endforeach ?>
+							</select>
+						</div>
 					</div>
 				</div>
 				<div class="container-input">

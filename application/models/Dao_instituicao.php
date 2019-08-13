@@ -14,7 +14,7 @@ class Dao_instituicao extends CI_Model {
     {
 	   $this->db->select('instituicao_ensino.*, COUNT(aluno_atleta.id_aluno_atleta) as quantidade_por_escola')
      ->from('instituicao_ensino');
-      $this->db->join('aluno_atleta', 'instituicao_ensino.id_instituicao_ensino = aluno_atleta.id_instituicao_ensino')
+      $this->db->join('aluno_atleta', 'instituicao_ensino.id_instituicao_ensino = aluno_atleta.id_instituicao_ensino', 'left')
      ->group_by('instituicao_ensino.nome_instituicao_ensino');
      $this->db->order_by('quantidade_por_escola','desc');
       return $this->db->get()->result();

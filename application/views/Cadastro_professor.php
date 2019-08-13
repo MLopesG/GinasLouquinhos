@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Cadastrar unidade - Ginas Louquinhos</title>
+	<title>Cadastro professor - Ginas Louquinhos</title>
 	<meta charset="utf-8">
 	<link rel="shortcut icon" href="<?=base_url('public/img/índice.png');?>" type="image/png"/>
 	<link rel="stylesheet" type="text/css" href='<?=base_url('public/css/style.css');?>'>
@@ -28,19 +28,15 @@
 				</div>
 			<?php endif;  ?>
 			<div class="container-titulo">
-				<h1>Cadastrar unidade</h1>
+				<h1>Cadastrar escola</h1>
 			</div>
-			<form action="<?=base_url('unidades/cadastrar/salvar') ?>" method='post'>
+			<form action="<?=base_url('professores/cadastrar/salvar') ?>" method='post'>
 				<div class="container-input">
-					<label for="polo_unidade">Nome unidade:</label>
-					<input type="text" name="polo_unidade" id="polo_unidade">
+					<label for="nome_professor">Nome professor:</label>
+					<input type="text" name="nome_professor" id="nome_professor">
 				</div>
 				<div class="container-input">
-					<label for="endereco">Endereço unidade:</label>
-					<input type="text" name="endereco" id="endereco">
-				</div>
-				<div class="container-input">
-					<input type="submit" value="Cadastrar unidade - polo" >
+					<input type="submit" value="Cadastrar professor" >
 				</div>
 			</form>
 		</div>

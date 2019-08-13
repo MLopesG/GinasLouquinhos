@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Escolas - Ginas Louquinhos</title>
+	<title>Unidades - Ginas Louquinhos</title>
 	<meta charset="utf-8">
 	<link rel="shortcut icon" href="<?=base_url('public/img/índice.png');?>" type="image/png"/>
 	<link rel="stylesheet" type="text/css" href='<?=base_url('public/css/style.css');?>'>

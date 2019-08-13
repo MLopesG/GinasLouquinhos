@@ -9,11 +9,11 @@
 	<link rel="shortcut icon" href="<?=base_url('public/img/índice.png');?>" type="image/png"/>
 	<link rel="stylesheet" type="text/css" href='<?=base_url('public/css/style.css');?>'>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<?php include('public/componentes/validar_login.inc.php');?>
 	<script src="<?=base_url('public/vendor/main.min.js') ?>"></script>
 	<script src="<?=base_url('public/vendor/FileSaver.min.js') ?>"></script>
 	<script src="<?=base_url('public/vendor/jszip-utils.js') ?>"></script>
 	<script type="text/javascript" src="<?=base_url('public/js/termo.js')?>"></script>
-	<?php include('public/componentes/validar_login.inc.php');?>
 </head>
 <body>
 	<?php include('public/componentes/header.inc.php');?>
@@ -23,40 +23,22 @@
 		</div>
 		<div class="container">
 			<div class="container-titulo">
-				<h1>Atletas (<b><?=$total ?></b> - atletas)</h1>
+				<h1>(<?=count($atletas)?>) - Alunos cadastro na turma</h1>
+				<div class="erros">
+					<p>Professor:<?=$atletas[0]->nome_professor?></p>
+					<p>Dias: <?=$atletas[0]->dias_semanais?></p>
+					<p>Unidade:<?=$atletas[0]->polo_unidade?></p>
+					<p>Horário: <?=$atletas[0]->horario_inicio?> às <?=$atletas[0]->horario_final?></p>
+					<p>Periodo: <?=$atletas[0]->turno?></p>
+					<p>Vagas: <?=$atletas[0]->quantidade_vagas?> - alunos</p>
+					<p>Vagas restantes: (<?=$atletas[0]->quantidade_vagas - qtd_alteta_turma($atletas[0]->id_turma)?>)  - alunos</p>
+				</div>
 			</div>
 			<?php if($this->session->flashdata('messagem')): ?>
 				<div class="erros">
 					<p><?=$this->session->flashdata('messagem') ?></p>
 				</div>
 			<?php endif;  ?>
-			<details>
-				<summary>Filtrar atletas</summary>
-				<div class="container-filter">
-					<form  action="<?=base_url('filtro/pesquisa');?>" method="post">
-						<div class="container-input">
-							<div>
-								<select name="tipo_pesquisa">
-									<option>Selecionar pesquisa</option>
-									<option>Horário inicio</option>
-									<option>Periodo</option>
-									<option>Dias da semana</option>
-									<option>Professor(a)</option>
-									<option>Data nascimento</option>
-									<option>Sexo</option>
-									<option>Unidade</option>
-									<option>Atleta</option>
-									<option value="Escola">Escola</option>
-								</select>
-							</div>
-							<div>
-								<input type="text" name="pesquisa" placeholder="Exemplo de pesquisa: Data de nascimento 1999-02-12, Sexo: Masculino ou Feminino e Unidade">
-							</div>
-							<input type="submit" value="Filtrar" >
-						</div>
-					</form>
-				</div>
-			</details>
 			<?php  foreach ($atletas as $atleta):?>
 				<div>
 					<button class="accordion"><?=$atleta->nome_atleta?></button>
@@ -87,21 +69,8 @@
 					</div>
 				</div>
 			<?php endforeach ?>
-			<div class="container-btns">
-				<div class="pagination">
-					<?php if(!empty($links)): ?>
-					<p><?=$links; ?></p>
-					<?php endif; ?>	
-				</div>
-				<div class="btn-container">
-					<a href="<?=base_url('atleta/cadastro')?>">Cadastrar atleta</a>
-					<a href="<?=base_url('painel/relatorio-geral') ?>"> Relatório geral</a>
-					<a href="<?=base_url('painel/relatorios') ?>">Relatórios - registros</a>
-				</div>
-			</div>
 		</div>
 	</main>
 	<script type="text/javascript" src="<?=base_url('public/js/card.js')?>"></script>
-
 </body>
 </html>

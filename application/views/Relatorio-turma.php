@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Painel - Ginas Louquinhos</title>
+	<title>Relatorio turma - Ginas Louquinhos</title>
 	<meta charset="utf-8">
 	<link rel="shortcut icon" href="<?=base_url('public/img/índice.png');?>" type="image/png"/>
 	<link rel="stylesheet" type="text/css" href='<?=base_url('public/css/style.css');?>'>
@@ -19,25 +19,38 @@
 				<a onclick="Gerar_pdf()">Gerar documento - PDF</a>
 			</div>
 			<table id="HTML">
-				<caption class="title">Relatório geral (<?=count($atletas) ?> - atletas)</caption>
+				<caption class="title">Relatório Turma</caption>
 				<thead>
-					<tr>
-						<th>Aluno</th>
-						<th>Sexo</th>
-						<th>Data nasc.</th>
-						<th>Unidade</th>
+					<tr class="titulo_table">
+						<th>Código</th>
+						<th>Alunos</th>
 					</tr>
 				</thead>
 				<tbody>
-					<?php  foreach ($atletas as $atleta):?>
+					<?php foreach ($turma as $aluno):?>
 						<tr>
-							<td><?=$atleta->nome_atleta ?></td>
-							<td><?=$atleta->sexo_atleta ?></td>
-							<td><?=$atleta->data_nascimento_atleta ?></td>
-							<td><?=$atleta->polo_unidade ?></td>
+							<td><?=$aluno->id_aluno_atleta ?></td>
+							<td><?=$aluno->nome_atleta ?></td>
 						</tr>
 					<?php endforeach ?>
 				</tbody>
+				<tfoot>
+					<tr>
+						<th colspan="4">Professor:<?=$turma[0]->nome_professor ?></th>
+					</tr>
+					<tr>
+						<th colspan="4">Dias da semana/periodo: <?=$turma[0]->dias_semanais ?> / <?=$turma[0]->turno?></th>
+					</tr>
+					<tr>
+						<th colspan="4">Horário: <?=$turma[0]->horario_inicio ?> às <?=$turma[0]->horario_final ?></th>
+					</tr>
+					<tr>
+						<th colspan="4">Unidade:<?=$turma[0]->polo_unidade?></th>
+					</tr>
+					<tr>
+						<th colspan="4">Endereço:<?=$turma[0]->endereco ?></th>
+					</tr>
+				</tfoot>
 			</table>
 		</div>
 	</main>

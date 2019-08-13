@@ -9,7 +9,10 @@ class Dao_painel extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from('aluno_atleta');
-		$this->db->join('instituicao_ensino', 'aluno_atleta.id_instituicao_ensino = instituicao_ensino.id_instituicao_ensino');
+		$this->db->join('instituicao_ensino', 'aluno_atleta.id_instituicao_ensino = instituicao_ensino.id_instituicao_ensino','left');
+		$this->db->join('turmas', 'aluno_atleta.id_turma = turmas.id_turma','left');
+		$this->db->join('polos_unidades', 'turmas.id_polo_unidade = polos_unidades.id_polo_unidade','left');
+		$this->db->join('professores', 'turmas.id_professor = professores.id_professor','left');
 		$this->db->order_by('aluno_atleta.nome_atleta','asc');
 		$this->db->limit($inicio,$maximo); 
 		return $this->db->get()->result();
@@ -18,7 +21,10 @@ class Dao_painel extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from('aluno_atleta');
-		$this->db->join('instituicao_ensino', 'aluno_atleta.id_instituicao_ensino = instituicao_ensino.id_instituicao_ensino');
+		$this->db->join('instituicao_ensino', 'aluno_atleta.id_instituicao_ensino = instituicao_ensino.id_instituicao_ensino','left');
+		$this->db->join('turmas', 'aluno_atleta.id_turma = turmas.id_turma','left');
+		$this->db->join('polos_unidades', 'turmas.id_polo_unidade = polos_unidades.id_polo_unidade','left');
+		$this->db->join('professores', 'turmas.id_professor = professores.id_professor','left');
 		$this->db->order_by('aluno_atleta.nome_atleta','asc');
 		return $this->db->get()->result();
 	}
@@ -30,7 +36,10 @@ class Dao_painel extends CI_Model {
 	{
 		$this->db->like($tipo_filtro,$pesquisa);
 		$this->db->from('aluno_atleta');
-		$this->db->join('instituicao_ensino', 'aluno_atleta.id_instituicao_ensino = instituicao_ensino.id_instituicao_ensino');
+		$this->db->join('instituicao_ensino', 'aluno_atleta.id_instituicao_ensino = instituicao_ensino.id_instituicao_ensino','left');
+		$this->db->join('turmas', 'aluno_atleta.id_turma = turmas.id_turma','left');
+		$this->db->join('polos_unidades', 'turmas.id_polo_unidade = polos_unidades.id_polo_unidade','left');
+		$this->db->join('professores', 'turmas.id_professor = professores.id_professor','left');
 		$this->db->order_by('aluno_atleta.nome_atleta','asc');
 		return $this->db->get()->result();
 	}

@@ -29,11 +29,15 @@
 						<div>
 							<select name="tipo_pesquisa" onchange="form_idade(this.value)">
 								<option>Selecionar pesquisa</option>
+								<option>Horário inicio</option>
+								<option>Periodo</option>
+								<option>Dias da semana</option>
+								<option>Professor(a)</option>
 								<option >faixaetária de idade</option>
-								<option>data nascimento</option>
-								<option>sexo</option>
-								<option>unidade</option>
-								<option value="instituição de ensino">escola</option>
+								<option>Data nascimento</option>
+								<option>Sexo</option>
+								<option>Unidade</option>
+								<option value="Escola">Escola</option>
 							</select>
 						</div>
 						<div>

@@ -11,7 +11,7 @@ class Painel extends CI_Controller {
 		$config = array();
         $config["base_url"] = base_url() . "painel";
         $config["total_rows"] = $this->Dao_painel->registros_atletas();
-        $config["per_page"] = 20;
+        $config["per_page"] = 12;
         $config["uri_segment"] = 2;
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
@@ -22,7 +22,12 @@ class Painel extends CI_Controller {
 	}
 	public function  relatorio_geral(){
 		$data['atletas'] = $this->Dao_painel->todos_atletas_relatorios();
-		$this->load->view('Relatorios-geral',$data);
+		if (count($data['atletas']) == 0) {
+			$this->session->set_flashdata('messagem','Não foi possivel gerar o relátorio geral, não há dados suficientes.');
+			redirect('painel');
+		}else{
+			$this->load->view('Relatorios-geral',$data);	
+		}
 	}
 	public function filtro()
 	{
@@ -32,19 +37,32 @@ class Painel extends CI_Controller {
 		$tipo_filtro = null;
 		$data['total'] = 0;
 		
-		if($tipo_pesquisa == 'Data Nascimento'){
+	
+		if($tipo_pesquisa == 'Horário inicio'){
+			$tipo_filtro = 'horario_inicio';
+			$pesquisa = $pesquisa_input;
+		}else if($tipo_pesquisa =='Periodo' ){
+			$tipo_filtro = 'turno';
+			$pesquisa = $pesquisa_input;			
+		}else if ($tipo_pesquisa == 'Dias da semana') {
+			$tipo_filtro = 'dias_semanais';
+			$pesquisa = $pesquisa_input;						
+		}else if($tipo_pesquisa == 'Professor(a)'){
+			$tipo_filtro = 'nome_professor';
+			$pesquisa = $pesquisa_input;
+		}else if($tipo_pesquisa == 'Data Nascimento'){
 			$tipo_filtro = 'data_nascimento_atleta';
 			$pesquisa = $pesquisa_input;
 		}else if($tipo_pesquisa =='Sexo' ){
 			$tipo_filtro = 'sexo_atleta';
 			$pesquisa = $pesquisa_input;			
 		}else if ($tipo_pesquisa == 'Unidade') {
-			$tipo_filtro = 'Unidade';
+			$tipo_filtro = 'polo_unidade';
 			$pesquisa = $pesquisa_input;						
 		}else if($tipo_pesquisa == 'Atleta'){
 			$tipo_filtro = 'nome_atleta';
 			$pesquisa = $pesquisa_input;
-		}else if($tipo_pesquisa == 'escola'){
+		}else if($tipo_pesquisa == 'Escola'){
 			$tipo_filtro = 'instituicao_ensino.nome_instituicao_ensino';
 			$pesquisa = $pesquisa_input;
 		}else{
@@ -71,16 +89,28 @@ class Painel extends CI_Controller {
 		$tipo_filtro = null;
 		$data['total'] = 0;
 		
-		if($tipo_pesquisa == 'data nascimento'){
+		if($tipo_pesquisa == 'Horário inicio'){
+			$tipo_filtro = 'horario_inicio';
+			$pesquisa = $pesquisa_input;
+		}else if($tipo_pesquisa =='Periodo' ){
+			$tipo_filtro = 'turno';
+			$pesquisa = $pesquisa_input;			
+		}else if ($tipo_pesquisa == 'Dias da semana') {
+			$tipo_filtro = 'dias_semanais';
+			$pesquisa = $pesquisa_input;						
+		}else if($tipo_pesquisa == 'Professor(a)'){
+			$tipo_filtro = 'nome_professor';
+			$pesquisa = $pesquisa_input;
+		}else if($tipo_pesquisa == 'Data nascimento'){
 			$tipo_filtro = 'data_nascimento_atleta';
 			$pesquisa = $pesquisa_input;
-		}else if($tipo_pesquisa =='sexo' ){
+		}else if($tipo_pesquisa =='Sexo' ){
 			$tipo_filtro = 'sexo_atleta';
 			$pesquisa = $pesquisa_input;			
-		}else if ($tipo_pesquisa == 'unidade') {
-			$tipo_filtro = 'unidade';
+		}else if ($tipo_pesquisa == 'Unidade') {
+			$tipo_filtro = 'polo_unidade';
 			$pesquisa = $pesquisa_input;						
-		}else if($tipo_pesquisa == 'instituição de ensino'){
+		}else if($tipo_pesquisa == 'Escola'){
 			$tipo_filtro = 'nome_instituicao_ensino';
 			$pesquisa = $pesquisa_input;
 		}else{

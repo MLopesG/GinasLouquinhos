@@ -32,17 +32,6 @@
 			</div>
 			<form method="post" action="<?=base_url('atleta/cadastro/salvar')?>">
 				<div class="container-divisão-form">
-					<label>Unidade <b>(Selecione unidade):</b></label>
-					<div class="container-input">
-						<select name="unidade">
-							<option value="">Selecione unidade</option>
-							<?php foreach ($polos_unidades as $unidade):?>
-								<option value="<?=$unidade->polo_unidade ?>"><?=$unidade->polo_unidade ?></option>
-						    <?php endforeach ?>
-						</select>
-					</div>
-				</div>
-				<div class="container-divisão-form">
 					<legend>Dados Cadastrais do Aluno-atleta</legend>
 					<div class="container-input">
 						<label for="nome_atleta">Nome:</label>
@@ -108,18 +97,22 @@
 				</div>
 				<div class="container-divisão-form">
 					<p>Autorizo a sua participação nas aulas de Ginástica Artística do Projeto Ginaslouquinhos nos:</p>
-					<div class="container-input">
-						<label>Dias</label>
-						<input type="text" name="dias_participacao">
-					</div>
-					<div class="container-input">
-						<label>Horário</label>
-						<input type="time" name="horario_participacao">
+					<div class="container-divisão-form">
+						<label>Dias/Horário:</label>
+						<div class="container-input">
+							<select name="id_turma">
+								<option value="">Selecione unidade</option>
+								<?php foreach ($turmas as $turma):?>
+									<option value="<?=$turma->id_turma ?>">Professor:(<?=$turma->nome_professor?>) -  Unidade:(<?=$turma->polo_unidade?>)
+										Horário: (<?=$turma->horario_inicio?> às <?=$turma->horario_final?>) - Periodo: (<?=$turma->turno?>)</option>
+							    <?php endforeach ?>
+							</select>
+						</div>
 					</div>
 				</div>
 				<div class="container-input">
 						<label for="data_cadastro">Data cadastro:</label>
-						<input type="date" name="data_cadastro" id="data_cadastro">
+						<input type="datetime-local" name="data_cadastro" id="data_cadastro">
 				</div>
 				<div class="container-input">
 					<input type="submit" value="Cadastrar atleta">

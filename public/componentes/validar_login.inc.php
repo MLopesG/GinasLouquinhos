@@ -7,6 +7,7 @@
   integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="
   crossorigin="anonymous"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"  type="text/javascript"></script>
+
 <?php 
 	if(empty($this->session->userdata('logado'))):
 		$this->session->set_flashdata('messagem','Sessão finalizada.');

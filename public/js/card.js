@@ -10,7 +10,6 @@ var className = document.getElementsByClassName("accordion");
 		 } 
 	});
 }
-
 var excluir = (link)=>{
 	$(function () {
 		$("#messagem").dialog({

@@ -40,6 +40,9 @@
 				<input type="submit" value="Entrar">
 			</div>
 		</form>
+		<div class="versão-sistema">
+			<p>Última versão 1.3 - 13/08/2019.</p>
+		</div>
 	</main>
 </body>
 </html>
