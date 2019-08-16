@@ -115,5 +115,52 @@ class Turmas extends CI_Controller {
 			$this->load->view('Relatorio-turma',$data);
 		}
 	}
+	public function chamada_aluno($id)
+	{
+
+		$meses = array ('01' => "Janeiro", '02' => "Fevereiro", '03' => "Março", '04' => "Abril", '05' => "Maio", '06' => "Junho", '07' => "Julho", '08' => "Agosto", '09' => "Setembro", '10' => "Outubro", '11' => "Novembro", '12' => "Dezembro");
+
+		$diasdasemana = array ('Terça e Quinta' => array(2,4),'Segunda, Quarta e Sexta' => array(1,3,5),'Quarta e Sexta'=> array(3,5));
+
+		$consulta = $this->Dao_turmas->lista_turma_alunos($id);
+
+		if(count($consulta) == 0){
+			$this->session->set_flashdata('messagem', 'Não há atletas cadastrados nesse turma');
+			redirect('/turmas');
+		}else{
+			$data['mes'] = null;
+			$datas_chamadas = array();
+			$dias = $diasdasemana[$consulta[0]->dias_semanais];
+
+			foreach ($dias as $dia) {
+				$mes_inicio = date('m');
+				$dia_inicio = $dia;
+				$ano_inicio = date('y');
+
+				$mes_fim = date('m');
+				$dia_fim = date('t', mktime(0, 0, 0, 10, 10, date('y')));
+				$ano_fim = date('y');
+
+				$dini = mktime(0,0,0,$mes_inicio,$dia_inicio,$ano_inicio);
+				$dfim = mktime(0,0,0,$mes_fim,$dia_fim,$ano_fim); 
+
+				while($dini <= $dfim)
+				{      
+				   $dt = date("d/m",$dini);
+				   $diasemana = date("w", $dini);   
+				   
+				   if($diasemana == $dia_inicio){
+				       $datas_chamadas[] = $dt;     
+				   }
+				    $data['mes']  = $meses[date('m')];
+				   $dini += 86400;
+				}
+			}
+			$data['data_para_chamada'] =  $datas_chamadas;
+			$data['turma'] = $consulta;
+			$this->load->view('Chamada',$data);
+		}
+	}
+	
 }
 	

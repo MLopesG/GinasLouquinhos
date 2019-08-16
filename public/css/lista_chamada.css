@@ -1,0 +1,93 @@
+
+header,
+main{
+	font-family: 'arial';
+	width:70%;
+	margin: auto;
+	box-shadow: 1px 2px 2px 2px #eeeeee;
+	background:#ffff;
+	padding:30px 30px;
+}
+header{
+	align-items:center;
+	display:flex;
+	height:200px;
+}
+header p{
+	margin-top: 30px;
+}
+td, th {  
+  border: 1px solid #000;
+  text-align:  center;
+  padding:10px 1px;
+}
+
+table {
+ width:100%;
+  border-collapse: collapse;
+}
+.assinatura{
+	margin-top: 40px;
+	display:flex;
+	align-items:center;
+	justify-content:space-between;
+}
+.cabeçalho img{
+	width:100%;
+}
+.assinatura{
+	text-align: center;
+}
+.sub-cabeçalho{
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	padding:40px 20px;
+}
+.sub-cabeçalho .logo-2,
+.sub-cabeçalho .titulo{
+	margin-right: 5rem;
+}
+.titulo h1{
+	text-align:center;
+	font-size:1.2rem;
+}
+.titulo h2{
+	text-align:center;
+	font-size:0.8rem;
+	text-decoration: underline;
+}
+.dados-campo {
+	display:flex;
+}
+.informações p{
+	padding-right:2rem;
+	font-weight:bold;
+	font-size: 1rem;
+}
+.dados-fim-form{
+	margin-top: 15rem;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+}
+.dados-fim-form {
+	text-align:center;
+}
+
+.btn-container a{
+	padding:10px 10px;
+	text-decoration:none;
+	margin-top: 2rem;
+	box-shadow: 1px 1px 1px 1px #dedede;
+	cursor:pointer;
+	color:#fff;
+	border-radius:2px;
+	border:none;
+	background:#284B8F;
+}
+.vertical{
+	writing-mode: vertical-lr; 
+}
+.tabela{
+	width:100%;
+}

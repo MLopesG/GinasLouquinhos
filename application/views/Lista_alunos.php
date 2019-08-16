@@ -22,6 +22,7 @@
 			<p>Atleta será excluido do banco de dados.</p>
 		</div>
 		<div class="container">
+			
 			<div class="container-titulo">
 				<h1>(<?=count($atletas)?>) - Alunos cadastro na turma</h1>
 				<div class="erros">
@@ -33,12 +34,20 @@
 					<p>Vagas: <?=$atletas[0]->quantidade_vagas?> - alunos</p>
 					<p>Vagas restantes: (<?=$atletas[0]->quantidade_vagas - qtd_alteta_turma($atletas[0]->id_turma)?>)  - alunos</p>
 				</div>
+				<div class="btn-container recursos">
+					<div>
+						<a href="<?=base_url("turmas/relatorio/aluno/".$atletas[0]->id_turma."");?>">Relátorio turma</a>
+		  				<a href="<?=base_url("turmas/chamada/".$atletas[0]->id_turma."") ?>">Ficha de frequência</a>
+					</div>
+				</div>
 			</div>
+
 			<?php if($this->session->flashdata('messagem')): ?>
 				<div class="erros">
 					<p><?=$this->session->flashdata('messagem') ?></p>
 				</div>
 			<?php endif;  ?>
+			
 			<?php  foreach ($atletas as $atleta):?>
 				<div>
 					<button class="accordion"><?=$atleta->nome_atleta?></button>

@@ -38,6 +38,9 @@ a{
 	flex-direction: column;
 	margin-bottom: 30px;
 }
+.recursos{
+	margin-bottom: 30px;
+}
 .btns b{
 	text-align: center;
 }
@@ -408,6 +411,7 @@ tr:nth-child(even){
 	}
 	.btns{
 		flex-direction: row;
+		align-items:center;
 	}
 	.btns a{
 		margin-right:5px;

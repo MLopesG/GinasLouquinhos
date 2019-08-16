@@ -27,9 +27,25 @@ class Cadastro extends CI_Controller {
 	}
 	public function editar_salvar_atleta($id)
 	{
-		$this->Dao_atleta->update_atleta($this->input->post(),$id);
-		$this->session->set_flashdata('messagem', 'Informações alteradas com sucesso.');
-		redirect('/painel');
+		if($this->input->post('id_turma') == ''){
+			$this->session->set_flashdata('messagem', 'Selecione uma turma, para fazer alteração dos dados');
+			redirect('/painel');
+		}else{
+			$consulta = $this->Dao_turmas->editar_turma($this->input->post('id_turma'));
+
+			if($consulta[0]->quantidade_vagas == null){
+				$this->Dao_atleta->update_atleta($this->input->post(),$id);
+				$this->session->set_flashdata('messagem', 'Informações alteradas com sucesso.');
+				redirect('/painel');
+			}elseif(qtd_alteta_turma($this->input->post('id_turma')) >= $consulta[0]->quantidade_vagas){
+				$this->session->set_flashdata('messagem', 'Turma lotada, por favor selecione outra.');
+				redirect('/painel');
+			}else{
+				$this->Dao_atleta->update_atleta($this->input->post(),$id);
+				$this->session->set_flashdata('messagem', 'Informações alteradas com sucesso.');
+				redirect('/painel');
+			}
+		}
 	}
 	public function salvar_atleta()
 	{
@@ -56,7 +72,7 @@ class Cadastro extends CI_Controller {
 				$this->load->view('Cadastro-atleta',$data);
 			}else{
 				$turma_qtd = $this->Dao_atleta->turma($this->input->post('id_turma'));
-				if(qtd_alteta_turma($this->input->post('id_turma')) >= $turma_qtd[0]->quantidade_vagas){
+				if(qtd_alteta_turma($this->input->post('id_turma')) == $turma_qtd[0]->quantidade_vagas){
 					$this->session->set_flashdata('messagem', 'Não foi possivel cadastrar atleta nessa turma, atletas suportados é de:'.$turma_qtd[0]->quantidade_vagas);
 					redirect('/atleta/cadastro');
 				}else{

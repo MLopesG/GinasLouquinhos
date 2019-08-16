@@ -73,6 +73,7 @@
 						  <ul>
 						  	<li><b>Código turma:<?=$turma->id_turma?></b></li>
 						  	<li><b>Professor(a):  <?=$turma->nome_professor?></b></li>
+
 						  	<?php if(qtd_alteta_turma($turma->id_turma) > 0): ?>
 						  		<li>Vagas utilizadas: (<?=qtd_alteta_turma($turma->id_turma)?>) - Alunos</li>
 						 	 <?php endif ?>
@@ -85,15 +86,14 @@
 						  	<li>Unidade: <?=$turma->polo_unidade?> </li>
 						  	<li>Endereço Unidade:<?=$turma->endereco?> </li>
 						  	<li class="btns">
-						  		<a href="<?=base_url("turmas/editar/$turma->id_turma");?>">Alterar dados</a>
-						  		<a href="<?=base_url("turmas/lista-alunos/$turma->id_turma");?>">Lista de alunos</a>
-						  		<a href="<?=base_url("turmas/relatorio/aluno/$turma->id_turma");?>">Relátorio Turma</a>
-						  		<?php if(qtd_alteta_turma($turma->id_turma) == 0): ?>
-						  			<a onclick="excluir('<?=base_url("turmas/deletar/$turma->id_turma")?>')">Excluir turma</a>
+						  		<a href="<?=base_url("turmas/editar/".$turma->id_turma."")?>">Alterar dados</a>
+		  						<a href="<?=base_url("turmas/lista-alunos/".$turma->id_turma."");?>">Lista de alunos</a>
+		  						<?php if(qtd_alteta_turma($turma->id_turma) == 0): ?>
+						  			<a onclick="excluir('<?=base_url("turmas/deletar/".$turma->id_turma."")?>')">Excluir turma</a>
 						  		<?php else: ?>
 						  			<b>Não é possivel excluir turma quando há atletas cadastrados.</b>
 						  		<?php endif ?>
-						  	</li>	
+						  	</li>
 						  </ul>
 						</div>
 					</div>

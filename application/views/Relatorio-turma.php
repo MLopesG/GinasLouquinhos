@@ -22,14 +22,14 @@
 				<caption class="title">Relatório Turma</caption>
 				<thead>
 					<tr class="titulo_table">
-						<th>Código</th>
-						<th>Alunos</th>
+						<th>Nº</th>
+						<th>Nome dos alunos</th>
 					</tr>
 				</thead>
 				<tbody>
-					<?php foreach ($turma as $aluno):?>
+					<?php foreach ($turma as $key=> $aluno):?>
 						<tr>
-							<td><?=$aluno->id_aluno_atleta ?></td>
+							<td><?=$key+1 ?></td>
 							<td><?=$aluno->nome_atleta ?></td>
 						</tr>
 					<?php endforeach ?>
@@ -37,6 +37,9 @@
 				<tfoot>
 					<tr>
 						<th colspan="4">Professor:<?=$turma[0]->nome_professor ?></th>
+					</tr>
+					<tr>
+						<th colspan="4">Total alunos:<?=qtd_alteta_turma($turma[0]->id_turma)?></th>
 					</tr>
 					<tr>
 						<th colspan="4">Dias da semana/periodo: <?=$turma[0]->dias_semanais ?> / <?=$turma[0]->turno?></th>
