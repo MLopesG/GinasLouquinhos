@@ -1,4 +1,4 @@
-var className = document.getElementsByClassName("accordion");
+const className = document.getElementsByClassName("accordion");
 	for (var i = 0; i < className.length; i++) {
 		className[i].addEventListener("click", function() {
 		 this.classList.toggle("active");
@@ -10,7 +10,7 @@ var className = document.getElementsByClassName("accordion");
 		 } 
 	});
 }
-var excluir = (link)=>{
+const excluir = (link)=>{
 	$(function () {
 		$("#messagem").dialog({
 			buttons: {
@@ -24,7 +24,6 @@ var excluir = (link)=>{
 		});
 	});
 };
-
 $('#abrir').click(()=>{
 	$('#nav').toggle("fadding");
 });
@@ -38,7 +37,7 @@ $('#abrir').click(()=>{
  $('#rg_responsavel').mask('0.000.000', {reverse: true});
 
 
-var form_idade = (option)=>{
+const form_idade = (option)=>{
 	if(option == 'faixaetária de idade'){
 		document.querySelector('#form_filter').style.display = 'none';
 		document.querySelector('#form_filter_idade').style.display = 'block';

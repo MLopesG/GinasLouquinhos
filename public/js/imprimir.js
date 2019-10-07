@@ -1,4 +1,4 @@
-var printdiv = (printpage)=>{
+const printdiv = (printpage)=>{
 	let headstr = "<html><head><title></title></head><body>";
 	let footstr = "</body>";
 	let newstr = document.all.item(printpage).innerHTML;

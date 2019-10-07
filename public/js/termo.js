@@ -1,7 +1,7 @@
-var loadFile = (url,callback)=> {
+const loadFile = (url,callback)=> {
     JSZipUtils.getBinaryContent(url,callback);
 }
-var print_termo = (json)=>{
+const print_termo = (json)=>{
 	if(window.location.pathname == '/ginas/painel'){
 			loadFile("public/termo/termo.doc", function(err, content) {
 		    doc =  new DocxGen(content);

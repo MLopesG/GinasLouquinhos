@@ -46,6 +46,7 @@
 	$route['turmas/pesquisa'] = 'turmas/filtro_turma';
 	$route['turmas/lista-alunos/(:any)'] = 'turmas/lista_turmas/$1';
 	$route['turmas/relatorio/aluno/(:any)'] = 'turmas/alunos_turma/$1';
-	$route['turmas/chamada/(:any)'] = 'turmas/chamada_aluno/$1';
+	$route['turmas/ficha-chamada/(:any)'] = 'turmas/chamada_gerar/$1';
+	$route['turmas/ficha/(:any)'] = 'turmas/chamada_aluno/$1';
 	$route['404_override'] = '';
 	$route['translate_uri_dashes'] = FALSE;

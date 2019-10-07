@@ -1,7 +1,6 @@
- function Gerar_pdf(){
-  var doc = new jsPDF('p', 'mm');
-
-  var dom = new Object();
+ const  Gerar_pdf =() =>{
+  let doc = new jsPDF('p', 'mm');
+  let dom = new Object();
   dom.title = document.querySelector('.title').innerHTML;
   dom.info_pdf = function(){
     var rescrita = dom.title.replace("Relatório", "");

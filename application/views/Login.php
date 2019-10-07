@@ -25,7 +25,7 @@
 		<?php endif; ?>
 		<?php if($this->session->flashdata('messagem')): ?>
 			<div class="erros">
-				<p><?=$this->session->flashdata('messagem') ?></p>
+				<p id="texto"><?=$this->session->flashdata('messagem') ?></p>
 			</div>
 		<?php endif;  ?>
 			<div class="container-input">

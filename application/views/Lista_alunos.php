@@ -1,3 +1,4 @@
+  
 <?php	defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
@@ -37,7 +38,7 @@
 				<div class="btn-container recursos">
 					<div>
 						<a href="<?=base_url("turmas/relatorio/aluno/".$atletas[0]->id_turma."");?>">Relátorio turma</a>
-		  				<a href="<?=base_url("turmas/chamada/".$atletas[0]->id_turma."") ?>">Ficha de frequência</a>
+		  				<a href="<?=base_url("turmas/ficha-chamada/".$atletas[0]->id_turma."") ?>">Ficha de frequência</a>
 					</div>
 				</div>
 			</div>

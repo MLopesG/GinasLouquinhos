@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class Turmas extends CI_Controller {
 	public function index()
 	{	
@@ -88,7 +87,6 @@ class Turmas extends CI_Controller {
 	public function lista_turmas($id)
 	{
 		$data['atletas'] = $this->Dao_turmas->lista_turma_alunos($id);
-
 		if(count($data['atletas']) == 0){
 			$this->session->set_flashdata('messagem', 'Não há atletas cadastrados nesse turma.');
 			redirect('/turmas');
@@ -106,7 +104,6 @@ class Turmas extends CI_Controller {
 	public function alunos_turma($id)
 	{
 		$consulta = $this->Dao_turmas->lista_turma_alunos($id);
-
 		if(count($consulta) == 0){
 			$this->session->set_flashdata('messagem', 'Não há atletas cadastrados nesse turma');
 			redirect('/turmas');
@@ -115,31 +112,81 @@ class Turmas extends CI_Controller {
 			$this->load->view('Relatorio-turma',$data);
 		}
 	}
+	public function chamada_gerar($id){
+		$data['turma'] = $consulta = $this->Dao_turmas->lista_turma_alunos($id);
+
+		if(count($data['turma'])  == 0 ){
+			redirect('painel');
+		}else{
+			$this->load->view('Chamada_gerar',$data);
+		}
+	}
 	public function chamada_aluno($id)
 	{
 
-		$meses = array ('01' => "Janeiro", '02' => "Fevereiro", '03' => "Março", '04' => "Abril", '05' => "Maio", '06' => "Junho", '07' => "Julho", '08' => "Agosto", '09' => "Setembro", '10' => "Outubro", '11' => "Novembro", '12' => "Dezembro");
+		$this->form_validation->set_rules('professor','professor precisar ser preenchido','required');
+		$this->form_validation->set_rules('escola','escola precisarser preenchido','required');
+		$this->form_validation->set_rules('data_inicio','data de inico do bimestre precisa ser preenchido','required');
+		$this->form_validation->set_rules('data_fim','data final do bimestre precisa ser preenchido','required');
 
-		$diasdasemana = array ('Terça e Quinta' => array(2,4),'Segunda, Quarta e Sexta' => array(1,3,5),'Quarta e Sexta'=> array(3,5));
+		if($this->form_validation->run() == FALSE){
+			$data['turma'] = $consulta = $this->Dao_turmas->lista_turma_alunos($id);
 
-		$consulta = $this->Dao_turmas->lista_turma_alunos($id);
-
-		if(count($consulta) == 0){
-			$this->session->set_flashdata('messagem', 'Não há atletas cadastrados nesse turma');
-			redirect('/turmas');
+			if(count($data['turma'])  == 0 ){
+				redirect('painel');
+			}else{
+				$this->load->view('Chamada_gerar',$data);
+			}
 		}else{
-			$data['mes'] = null;
-			$datas_chamadas = array();
-			$dias = $diasdasemana[$consulta[0]->dias_semanais];
 
-			foreach ($dias as $dia) {
-				$mes_inicio = date('m');
-				$dia_inicio = $dia;
-				$ano_inicio = date('y');
+			$url = $_SERVER['HTTP_REFERER'];
 
-				$mes_fim = date('m');
-				$dia_fim = date('t', mktime(0, 0, 0, 10, 10, date('y')));
-				$ano_fim = date('y');
+			if($this->input->post('data_inicio') == $this->input->post('data_fim')){
+				$this->session->set_flashdata('messagem', 'Datas não podem ser iguais.');
+				redirect($url);
+			}
+
+			$meses = array (
+				'01' => "Janeiro",
+				'02' => "Fevereiro",
+				'03' => "Março",
+				'04' => "Abril",
+				'05' => "Maio", 
+				'06' => "Junho", 
+				'07' => "Julho", 
+				'08' => "Agosto", 
+				'09' => "Setembro", 
+				'10' => "Outubro", 
+				'11' => "Novembro", 
+				'12' => "Dezembro"
+			);
+			
+			$semanaDias = array (
+				'Terça e Quinta' => array(2,4),
+				'Segunda, Quarta e Sexta' => array(1,3,5),
+				'Quarta e Sexta'=> array(3,5)
+			);
+
+			$consulta = $this->Dao_turmas->lista_turma_alunos($id);
+
+			if(count($consulta) == 0){
+				$this->session->set_flashdata('messagem', 'Não há atletas cadastrados nesse turma');
+				redirect('/turmas');
+			}else{
+
+				$semana = $semanaDias[$consulta[0]->dias_semanais];
+				$data_inicio =  date('d/m/Y',strtotime($this->input->post('data_inicio')));
+				$data_final = date('d/m/Y',strtotime($this->input->post('data_fim')));
+
+				$mesesBimestre = [];
+
+				$datas_chamadas = array();
+				$mes_inicio = substr($data_inicio,3,2);
+				$dia_inicio = substr($data_inicio,0,2);
+				$ano_inicio = substr($data_inicio,6,6);
+				$mes_fim = substr($data_final,3,2);
+				$dia_fim = substr($data_final,0,2);
+				$ano_fim =substr($data_inicio,6,6);
 
 				$dini = mktime(0,0,0,$mes_inicio,$dia_inicio,$ano_inicio);
 				$dfim = mktime(0,0,0,$mes_fim,$dia_fim,$ano_fim); 
@@ -147,20 +194,29 @@ class Turmas extends CI_Controller {
 				while($dini <= $dfim)
 				{      
 				   $dt = date("d/m",$dini);
-				   $diasemana = date("w", $dini);   
-				   
-				   if($diasemana == $dia_inicio){
-				       $datas_chamadas[] = $dt;     
+				   $diaSemana = date("w",$dini);
+				   $mes = $meses[date('m',$dini)];
+
+				   if(!in_array($mes,$mesesBimestre)){
+				   	$mesesBimestre[] =  $mes;
 				   }
-				    $data['mes']  = $meses[date('m')];
-				   $dini += 86400;
+				   if(in_array($diaSemana,$semana)){
+			   		 $datas_chamadas[] = $dt;  
+				   }
+				    $dini += 86400;
 				}
+				
+				$data['informacoes_ficha'] = [
+					'mes'=>implode(',',$mesesBimestre),
+					'data_para_chamada'=> $datas_chamadas,
+					'turma'=>$consulta,
+					'escola'=> $this->input->post('escola'),
+					'professor'=>$this->input->post('professor'),
+					'datas' => $data_inicio .' - '. $data_final
+				];
+
+				$this->load->view('Chamada',$data);
 			}
-			$data['data_para_chamada'] =  $datas_chamadas;
-			$data['turma'] = $consulta;
-			$this->load->view('Chamada',$data);
 		}
 	}
-	
 }
-	

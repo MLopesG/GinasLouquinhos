@@ -69,4 +69,9 @@ class Dao_turmas extends CI_Model {
     $this->db->where('id_turma', $id);
     return $this->db->update('turmas');
   }
+  public function turma($id)
+  {
+    $this->db->where('id_turma',$id);
+    return $this->db->get('turmas')->result();
+  }
 }
